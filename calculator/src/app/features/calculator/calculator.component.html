@@ -1,0 +1,45 @@
+<section>
+  <form [formGroup]="reactiveForm" (ngSubmit)="send()">
+    <div>
+      <label for="firstInput">First Input</label>
+      <input
+        inputNumber
+        type="text"
+        data-testid="firstInput"
+        formControlName="firstInput"
+      />
+    </div>
+    <div>
+      <label for="secoundInput">Secound Input</label>
+      <input
+        inputNumber
+        type="text"
+        data-testid="secoundInput"
+        formControlName="secoundInput"
+      />
+    </div>
+    <button
+      type="submit"
+      data-testid="submitCalculator"
+      [disabled]="!reactiveForm.valid"
+    >Send calculator</button>
+    </form>
+</section>
+
+
+<section>
+  <table *ngIf="list$ | async as list">
+    <tr>
+      <th>First Input</th>
+      <th>Secound Input</th>
+      <th>Result</th>
+      <th>Status</th>
+    </tr>
+    <tr *ngFor="let item of list.result">
+      <td>{{ item?.firstNumber }}</td>
+      <td>{{ item?.secoundNumber }}</td>
+      <td>{{ item?.result }}</td>
+      <td>{{ item?.status }}</td>
+    </tr>
+  </table>
+</section>
